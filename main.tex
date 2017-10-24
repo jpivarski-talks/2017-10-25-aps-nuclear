@@ -54,142 +54,275 @@
 
 %%%% START
 
-\begin{frame}{The original Big Data}
-\vspace{0.5 cm}
+%% \begin{frame}{Particle physics: the original Big Data}
+%% \vspace{0.5 cm}
 
-\large For decades, physicists' computing needs were unique:
+%% \large For decades, our computing needs were unique:
 
-\vspace{0.1 cm}
-\begin{itemize}
-\item big datasets \hfill \begin{minipage}{0.7\linewidth}(too large for one computer: a moving definition!),\end{minipage}
-\item complex structure \hfill \begin{minipage}{0.7\linewidth}(nested data, web of relationships within each event),\end{minipage}
-\item has to be reduced \hfill \begin{minipage}{0.7\linewidth}(aggregated, by histogramming, usually)\end{minipage}
-\item to be modeled \hfill \begin{minipage}{0.7\linewidth}(fitting to extract physics results).\end{minipage}
-\end{itemize}
+%% \vspace{0.1 cm}
+%% \begin{itemize}
+%% \item big datasets \hfill \begin{minipage}{0.7\linewidth}(too large for one computer: a moving definition!),\end{minipage}
+%% \item complex structure \hfill \begin{minipage}{0.7\linewidth}(nested data, web of relationships within each event),\end{minipage}
+%% \item has to be reduced \hfill \begin{minipage}{0.7\linewidth}(aggregated, by histogramming, usually)\end{minipage}
+%% \item to be modeled \hfill \begin{minipage}{0.7\linewidth}(fitting to extract physics results).\end{minipage}
+%% \end{itemize}
 
-\vspace{0.5 cm}
-\uncover<2->{\textcolor{darkblue}{\large Today these criteria apply equally, or more so, to ``web scale data.''}}
-\end{frame}
+%% \vspace{0.5 cm}
+%% \uncover<2->{\textcolor{darkblue}{\large Today these criteria apply equally, or more so, to ``web scale data.''}}
+%% \end{frame}
 
-\begin{frame}{{200~PB is a lot of data}\only<2>{, but for Amazon, it's two trucks}}
-\vspace{0.35 cm}
-\includegraphics[width=0.73\linewidth]{cern-200pb.png}
+%% \begin{frame}{{200~PB is a lot of data}\only<2>{, but for Amazon, it's two trucks}}
+%% \vspace{0.35 cm}
+%% \includegraphics[width=0.73\linewidth]{cern-200pb.png}
 
-\vspace{-4.8 cm}
-\uncover<2->{\mbox{ } \hfill \includegraphics[width=0.7\linewidth]{aws-snowmobile.jpg}\hspace{-1 cm}}
-\end{frame}
+%% \vspace{-4.8 cm}
+%% \uncover<2->{\mbox{ } \hfill \includegraphics[width=0.7\linewidth]{aws-snowmobile.jpg}\hspace{-1 cm}}
+%% \end{frame}
 
-\begin{frame}{Also a much larger community}
-\vspace{0.35 cm}
-\textcolor{darkblue}{Rate of web searches for ``ROOT TTree'' vs.\ ``Spark DataFrame'' (Google Trends):}
+%% \begin{frame}{Also a much larger community}
+%% \vspace{0.35 cm}
+%% \textcolor{darkblue}{Rate of web searches for ``ROOT TTree'' vs.\ ``Spark DataFrame'' (Google Trends):}
 
-\includegraphics[width=\linewidth]{root-spark-google-trends.png}
+%% \includegraphics[width=\linewidth]{root-spark-google-trends.png}
 
-\vfill
+%% \vfill
+%% \begin{uncoverenv}<2->
+%% \textcolor{darkblue}{Similarly for question-and-answer sites:}
+%% \begin{itemize}
+%% \item RootTalk: 14,399 threads in 1997--2012 (15 years)
+%% \item StackOverflow questions tagged {\tt \small \#spark}: 26,155 in the 3.3 years the tag has existed. (Not counting CrossValidated, Spark Developer and User mailing lists\ldots)
+%% \end{itemize}
+%% \end{uncoverenv}
+
+%% \vfill
+%% \uncover<3>{\textcolor{darkorange}{\bf More users to talk to; more developers adding features/fixing bugs.}}
+%% \end{frame}
+
+%% \begin{frame}{Particle physics is a special case}
+%% \vspace{-0.5 cm}
+%% \begin{columns}[t]
+%% \column{0.5\linewidth}
+%% \begin{center}
+%% \underline{\Large Particle physics}
+%% \end{center}
+
+%% \begin{itemize}
+%% \item Events (modulo cosmics vetos or time-dependent calibrations) may be processed in isolation; embarrassingly parallel.
+
+%% \item<2-> Once collected, physics datasets are immutable (with revisions).
+
+%% \item<3-> Often fitting a model with a small number of parameters.
+
+%% \end{itemize}
+
+%% \column{0.5\linewidth}
+%% \begin{center}
+%% \underline{\Large Big Data}
+%% \end{center}
+
+%% \begin{itemize}
+%% \item All-to-all problems are common, such as matching a customer's purchases with all other purchases to make a recommendation.
+
+%% \item<2-> Transactions accumulate in the database during analysis.
+
+%% \item<3-> Modeling human behavior, more interested in predictions than description, so models may have thousands of free parameters.
+
+%% \end{itemize}
+
+%% \end{columns}
+%% \end{frame}
+
+%% \begin{frame}{Our software is largely isolated from these developments}
+%% \vspace{0.17 cm}
+%% \includegraphics[width=\linewidth]{separation-2.png}
+%% \end{frame}
+
+%% \begin{frame}{Who am I?}
+%% \vspace{0.5 cm}
+%% \begin{columns}[t]
+%% \column{0.4\linewidth}
+%% \begin{columns}
+%% \column{0.4\linewidth}
+%% Jim Pivarski
+%% \column{0.25\linewidth}
+%% \hspace{-1.3 cm}\includegraphics[width=\linewidth]{jim_pivarski.png}
+%% \end{columns}
+
+%% \begin{itemize}
+%% \item 5 years CLEO (9 GeV $e^+e^-$)
+%% \item 5 years CMS (7 TeV $pp$)
+%% \item \only<1>{5 years Open Data Group}\only<2->{\mbox{\textcolor{darkblue}{5 years Open Data Group \hspace{0.9 cm}$\longrightarrow$\hspace{-3 cm}}}}
+%% \item 2 years Project DIANA-HEP
+%% \end{itemize}
+
+%% \column{0.4\linewidth}
+%% \uncover<2->{\textcolor{darkblue}{
+%% hyperspectral imagery \\
+%% automobile traffic \\
+%% network security \\
+%% Twitter sentiment \\
+%% Google n-grams \\
+%% DNA sequence analysis \\
+%% credit card fraud detection
+%% }}
+
+%% \uncover<2->{\Large\textcolor{darkblue}{ and ``Big Data'' tools}}
+%% \end{columns}
+
+%% \vspace{0.5 cm}
+%% \begin{center}
+%% \uncover<3>{\textcolor{darkorange}{\bf My goal within DIANA-HEP is to make it easier for physicists to use Big Data tools in their analyses, particularly for interactive, exploratory analysis.}}
+%% \end{center}
+%% \end{frame}
+
+%% \begin{frame}{}
+%% \vspace{-0.22 cm}
+%% \begin{center}
+%% \only<1>{\includegraphics[width=0.88\linewidth]{diana-hep.png}}
+%% \only<2>{\includegraphics[width=0.88\linewidth]{diana-hep2.png}}
+%% \end{center}
+%% \end{frame}
+
+\begin{frame}{Three types of physics software}
+\vspace{0.25 cm}
+\begin{columns}[t]
+\column{0.33\linewidth}
+\textcolor{darkblue}{\underline{Type I:}} Physics software that serves {\it the same function} as software in the Big Data community.
+
 \begin{uncoverenv}<2->
-\textcolor{darkblue}{Similarly for question-and-answer sites:}
+\begin{center}
+\includegraphics[height=1.5 cm]{stamp_replace.png}
+\end{center}
+
+Big Data community has better resources for
 \begin{itemize}
-\item RootTalk: 14,399 threads in 1997--2012 (15 years)
-\item StackOverflow questions tagged {\tt \small \#spark}: 26,155 in the 3.3 years the tag has existed. (Not counting CrossValidated, Spark Developer and User mailing lists\ldots)
+\item maintaining code
+\item catching bugs
+\item revising bad designs.
 \end{itemize}
 \end{uncoverenv}
 
-\vfill
-\uncover<3>{\textcolor{darkorange}{\bf More users to talk to; more developers adding features/fixing bugs.}}
-\end{frame}
+\column{0.33\linewidth}
+\textcolor{darkblue}{\underline{Type II:}} Domain-specific software for our analyses. Example: ``HiggsCombiner.'' \mbox{\hspace{1 cm}}
 
-\begin{frame}{Particle physics is a special case}
-\vspace{-0.5 cm}
-\begin{columns}[t]
-\column{0.5\linewidth}
+\begin{uncoverenv}<3->
 \begin{center}
-\underline{\Large Particle physics}
+\includegraphics[height=1.5 cm]{stamp_keep.png}
 \end{center}
 
-\begin{itemize}
-\item Events (modulo cosmics vetos or time-dependent calibrations) may be processed in isolation; embarrassingly parallel.
+Obviously. This really is a unique problem.
+\end{uncoverenv}
 
-\item<2-> Once collected, physics datasets are immutable (with revisions).
+\column{0.33\linewidth}
+\textcolor{darkblue}{\underline{Type III:}} Physics software or concepts that would benefit the Big Data community. \\ \mbox{ }
 
-\item<3-> Often fitting a model with a small number of parameters.
-
-\end{itemize}
-
-\column{0.5\linewidth}
+\begin{uncoverenv}<4->
 \begin{center}
-\underline{\Large Big Data}
+\includegraphics[height=1.5 cm]{stamp_promulgate.png}
 \end{center}
 
-\begin{itemize}
-\item All-to-all problems are common, such as matching a customer's purchases with all other purchases to make a recommendation.
-
-\item<2-> Transactions accumulate in the database during analysis.
-
-\item<3-> Modeling human behavior, more interested in predictions than description, so models may have thousands of free parameters.
-
-\end{itemize}
-
+Cultural exchange goes in both directions.
+\end{uncoverenv}
 \end{columns}
-\end{frame}
-
-\begin{frame}{Our software is largely isolated from these developments}
-\vspace{0.17 cm}
-\includegraphics[width=\linewidth]{separation-2.png}
-\end{frame}
-
-\begin{frame}{But bridging the divide is worthwhile in the long run}
-\vspace{0.5 cm}
-\begin{center}
-\hspace{1 cm}\only<1>{\includegraphics[width=0.65\linewidth]{effort0.pdf}}\only<2>{\includegraphics[width=0.65\linewidth]{effort.pdf}}
-\end{center}
-\end{frame}
-
-\begin{frame}{Who am I?}
-\vspace{0.5 cm}
-\begin{columns}[t]
-\column{0.4\linewidth}
-\begin{columns}
-\column{0.4\linewidth}
-Jim Pivarski
-\column{0.25\linewidth}
-\hspace{-1.3 cm}\includegraphics[width=\linewidth]{jim_pivarski.png}
-\end{columns}
-
-\begin{itemize}
-\item 5 years CLEO (9 GeV $e^+e^-$)
-\item 5 years CMS (7 TeV $pp$)
-\item \only<1>{5 years Open Data Group}\only<2->{\mbox{\textcolor{darkblue}{5 years Open Data Group \hspace{0.9 cm}$\longrightarrow$\hspace{-3 cm}}}}
-\item 2 years Project DIANA-HEP
-\end{itemize}
-
-\column{0.4\linewidth}
-\uncover<2->{\textcolor{darkblue}{
-hyperspectral imagery \\
-automobile traffic \\
-network security \\
-Twitter sentiment \\
-Google n-grams \\
-DNA sequence analysis \\
-credit card fraud detection
-}}
-
-\uncover<2->{\Large\textcolor{darkblue}{ and ``Big Data'' tools}}
-\end{columns}
-
-\vspace{0.5 cm}
-\begin{center}
-\uncover<3>{\textcolor{darkorange}{\large My goal within DIANA-HEP is to make it easier for physicists to use Big Data tools in their analyses, particularly for interactive, exploratory analysis.}}
-\end{center}
 \end{frame}
 
 \begin{frame}{}
-\vspace{-0.22 cm}
+\vspace{0.5 cm}
 \begin{center}
-\only<1>{\includegraphics[width=0.88\linewidth]{diana-hep.png}}
-\only<2>{\includegraphics[width=0.88\linewidth]{diana-hep2.png}}
+\begin{minipage}{0.8\linewidth}
+\begin{center}
+\Large All three types in a single example: porting an analysis from ROOT to Spark.
+\end{center}
+\end{minipage}
+\end{center}
+\end{frame}
+
+\begin{frame}{CMS Big Data Project}
+\vspace{1 cm}
+\begin{columns}
+\column{0.4\linewidth}
+\begin{itemize}
+\item Oliver Gutsche, Matteo Cremonesi, Cristina Su\'arez (Fermilab) wanted to try their CMS dark matter search on Spark.
+\item My first DIANA-HEP project: I joined to plow through technical issues before the analysts hit them.
+\end{itemize}
+
+\column{0.6\linewidth}
+\includegraphics[width=\linewidth]{snowplow.jpg}
+\end{columns}
+
+\vspace{0.25 cm}
+\begin{center}
+\textcolor{blue}{\underline{\url{https://cms-big-data.github.io/}}}
+\end{center}
+\end{frame}
+
+\begin{frame}{How to get the data into Spark}
+\vspace{0.5 cm}
+\small
+
+\underline{\large \bf Several months of trial-and-error in one slide}
+\begin{center}
+\begin{minipage}{0.8\linewidth}
+\begin{enumerate}
+\item \textcolor{darkblue}{Java Native Interface (JNI)} \\ No! This ought to be the right solution, but Java \\ and ROOT are both large, complex applications \\ with their own memory management: couldn't keep \\ them from interfering (segmentation faults).
+
+\vspace{-2.2 cm}
+\hfill \includegraphics[height=1.65 cm]{root-spark.pdf}
+
+\vspace{0.5 cm}
+\item \textcolor{darkblue}{\normalsize Python as glue: PyROOT and PySpark in the same process}
+
+\hfill \includegraphics[height=1.65 cm]{pyroot-pyspark.pdf}
+
+\vspace{-1.8 cm}
+PySpark is a low-performance \\ solution: all data must be passed \\ over a text-based socket and \\ interpreted by Python.
+
+\item \textcolor{darkblue}{\normalsize Convert to a Spark-friendly format, like Apache Avro}
+
+We used this for a year. Efficient after conversion, but conversion step is awkward. Avro's C library is difficult to deploy.
+\end{enumerate}
+\end{minipage}
+\end{center}
+
+\begin{uncoverenv}<2->
+\vspace{-5.2 cm}
+\begin{center}
+\fcolorbox{violet}{white}{\begin{minipage}{0.85\linewidth}
+\vspace{0.5 cm}
+\begin{center}
+\begin{minipage}{0.9\linewidth}
+\centering \large \textcolor{violet}{These issues are historical. Industry-standard formats like Avro and Parquet can store complex physics events; we just happen to have a lot of data in ROOT files.}
+\end{minipage}
+\end{center}
+\vspace{0.1 cm}
+\end{minipage}}
+\end{center}
+\vspace{5 cm}
+\end{uncoverenv}
+\end{frame}
+
+\begin{frame}{This was a missed opportunity for exporting physics solutions!}
+\vspace{0.5 cm}
+\large \textcolor{violet}{ROOT was storing nested data structures in a columnar format (for faster access) over a decade before it was reinvented at Google.}
+
+\vspace{-0.3 cm}
+\begin{center}
+\begin{minipage}{0.8\linewidth}
+\vspace{0.5 cm}
+\small Sergey Melnik, Andrey Gubarev, Jing Jing Long, Geoffrey Romer, Shiva Shivakumar, Matt Tolton, Theo Vassilakis. \textcolor{darkblue}{\normalsize {\it Dremel: Interactive Analysis of Web-Scale Datasets} (2010).}
+
+\vspace{0.25 cm}
+\fbox{\includegraphics[width=\linewidth]{dremel-paper.png}}
+\end{minipage}
 \end{center}
 \end{frame}
 
 
-
 \end{document}
+
+%% \begin{frame}{Conclusions slide?}
+%% \vspace{0.5 cm}
+%% \begin{center}
+%% \hspace{1 cm}\only<1>{\includegraphics[width=0.65\linewidth]{effort0.pdf}}\only<2>{\includegraphics[width=0.65\linewidth]{effort.pdf}}
+%% \end{center}
+%% \end{frame}
