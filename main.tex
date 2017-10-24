@@ -54,10 +54,10 @@
 
 %%%% START
 
-\begin{frame}{Big Data}
+\begin{frame}{The original Big Data}
 \vspace{0.5 cm}
 
-\large For decades, physicists' computing needs were almost unique:
+\large For decades, physicists' computing needs were unique:
 
 \vspace{0.1 cm}
 \begin{itemize}
@@ -81,7 +81,7 @@
 
 \begin{frame}{Also a much larger community}
 \vspace{0.35 cm}
-\textcolor{darkblue}{Rate of web searches for ``ROOT TTree'' and ``Spark DataFrame'' (Google Trends):}
+\textcolor{darkblue}{Rate of web searches for ``ROOT TTree'' vs.\ ``Spark DataFrame'' (Google Trends):}
 
 \includegraphics[width=\linewidth]{root-spark-google-trends.png}
 
@@ -111,7 +111,7 @@
 
 \item<2-> Once collected, physics datasets are immutable (possibly versioned).
 
-\item<3-> Usually fitting a known theory or parameterized model.
+\item<3-> Often fitting a model with a small number of parameters.
 
 \end{itemize}
 
@@ -123,18 +123,25 @@
 \begin{itemize}
 \item All-to-all problems are common, such as matching a customer's purchases with all other purchases to make a recommendation.
 
-\item<2-> Transactions accumulate in the database while analyzing.
+\item<2-> Transactions accumulate in the database during analysis.
 
-\item<3-> Modeling human behavior, more interested in predictions than parameters of a model.
+\item<3-> Modeling human behavior, more interested in predictions than description, so models may have thousands of free parameters.
 
 \end{itemize}
 
 \end{columns}
 \end{frame}
 
-\begin{frame}{Can we bridge the divide?}
+\begin{frame}{Our software is largely isolated from these developments}
 \vspace{0.17 cm}
 \includegraphics[width=\linewidth]{separation-2.png}
+\end{frame}
+
+\begin{frame}{But bridging the divide is worthwhile in the long run}
+\vspace{0.5 cm}
+\begin{center}
+\hspace{1 cm}\only<1>{\includegraphics[width=0.65\linewidth]{effort0.pdf}}\only<2>{\includegraphics[width=0.65\linewidth]{effort.pdf}}
+\end{center}
 \end{frame}
 
 %% \begin{frame}{Our problems fit into Big Data concepts}
