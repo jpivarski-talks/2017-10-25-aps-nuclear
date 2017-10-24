@@ -99,56 +99,43 @@
 \end{frame}
 
 \begin{frame}{Particle physics is a special case}
+\vspace{-0.5 cm}
+\begin{columns}[t]
+\column{0.5\linewidth}
+\begin{center}
+\underline{\Large Particle physics}
+\end{center}
 
+\begin{itemize}
+\item Events (modulo cosmics vetos or time-dependent calibrations) may be processed in isolation; embarrassingly parallel.
 
+\item<2-> Once collected, physics datasets are immutable (possibly versioned).
 
+\item<3-> Usually fitting a known theory or parameterized model.
+
+\end{itemize}
+
+\column{0.5\linewidth}
+\begin{center}
+\underline{\Large Big Data}
+\end{center}
+
+\begin{itemize}
+\item All-to-all problems are common, such as matching a customer's purchases with all other purchases to make a recommendation.
+
+\item<2-> Transactions accumulate in the database while analyzing.
+
+\item<3-> Modeling human behavior, more interested in predictions than parameters of a model.
+
+\end{itemize}
+
+\end{columns}
 \end{frame}
 
-
-%% \begin{frame}{Bigger data}
-%% \vspace{0.5 cm}
-
-%% \large In fact, they're solving {\it harder} problems than ours
-
-%% \vspace{0.1 cm}
-%% \begin{itemize}
-%% \item all-to-all problems \hfill \begin{minipage}{0.7\linewidth}(relationships span whole dataset: e.g.\ market basket),\end{minipage}
-%% \item live updates \hfill \begin{minipage}{0.7\linewidth}(dataset grows while you analyze it),\end{minipage}
-%% \item no ansatz \hfill \begin{minipage}{0.7\linewidth}(modeling human behavior, often predictively),\end{minipage}
-%% \item complex models \hfill \begin{minipage}{0.7\linewidth}(thousands of free parameters; machine learning).\end{minipage}
-%% \end{itemize}
-
-%% \vspace{0.5 cm}
-%% \begin{uncoverenv}<2->
-%% \large And they have more resources:
-
-%% \vspace{0.1 cm}
-%% \begin{itemize}
-%% \item more developers \hfill \begin{minipage}{0.7\linewidth}(trained in software engineering, not physics),\end{minipage}
-%% \item open-source culture \hfill \begin{minipage}{0.7\linewidth}(mostly).\end{minipage}
-%% \end{itemize}
-%% \end{uncoverenv}
-%% \end{frame}
-
-%% \begin{frame}{The conclusion I take from this}
-%% \vspace{0.5 cm}
-%% \begin{center}
-%% \LARGE We should be using their software.
-%% \end{center}
-%% \end{frame}
-
-%% \begin{frame}{Our software developed \only<1>{outside}\only<2->{\xcancel{outside} \underline{before}} the Big Data ecosystem}
-%% \vspace{0.5 cm}
-%% \begin{uncoverenv}<4->
-%% \fbox{\begin{minipage}{5 cm}
-%% We can still bridge this gap, though it's a challenge.
-%% \end{minipage}}
-%% \end{uncoverenv}
-
-%% \vspace{-1.43 cm}
-%% \only<1-2>{\includegraphics[width=\linewidth]{separation-1.png}}
-%% \only<3->{\includegraphics[width=\linewidth]{separation-2.png}}
-%% \end{frame}
+\begin{frame}{Can we bridge the divide?}
+\vspace{0.17 cm}
+\includegraphics[width=\linewidth]{separation-2.png}
+\end{frame}
 
 %% \begin{frame}{Our problems fit into Big Data concepts}
 %% \vspace{0.5 cm}
