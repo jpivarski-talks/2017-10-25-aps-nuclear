@@ -317,24 +317,203 @@
 %% \end{center}
 %% \end{frame}
 
-\begin{frame}{Easiest solution: reimplement ROOT I/O in Java}
-\vspace{0.25 cm}
-\begin{columns}
-\column{1.1\linewidth}
+%% \begin{frame}{Easiest solution: reimplement ROOT I/O in Java}
+%% \vspace{0.25 cm}
+%% \begin{columns}
+%% \column{1.1\linewidth}
 
-\renewcommand{\arraystretch}{2.5}
-\begin{tabular}{p{2 cm} c p{4.6 cm} p{5.25 cm}}
-\centering root4j/ spark-root & Java/Scala & For Spark and other Big Data projects that run on Java. & Started by Tony Johnson in 2001, updated by Viktor Khristenko. \\
-\centering \only<2->{JsRoot} & \only<2->{Javascript} & \only<1>{\mbox{\hspace{4 cm}} \mbox{\hspace{4 cm}}}\only<2->{For interacting with ROOT in the browser or standalone.} & \only<2->{Sergey Linev} \\
-\centering \only<3->{rootio} & \only<3->{Go} & \only<3->{go-hep ecosystem in Go.} & \only<3->{Sebastien Binet} \\
-\centering \only<4->{uproot} & \only<4->{Python} & \only<1-3>{\mbox{\hspace{4 cm}} \mbox{\hspace{4 cm}} \mbox{\hspace{4 cm}}}\only<4->{For quickly getting ROOT data into Numpy and Pandas for machine learning.}\vspace{-0.25 cm} & \only<4->{Jim Pivarski (me)} \\
- & \only<5->{Rust?} & & \\
-\end{tabular}
+%% \renewcommand{\arraystretch}{2.5}
+%% \begin{tabular}{p{2 cm} c p{4.6 cm} p{5.25 cm}}
+%% \centering root4j/ spark-root & Java/Scala & For Spark and other Big Data projects that run on Java. & Started by Tony Johnson in 2001, updated by Viktor Khristenko. \\
+%% \centering \only<2->{JsRoot} & \only<2->{Javascript} & \only<1>{\mbox{\hspace{4 cm}} \mbox{\hspace{4 cm}}}\only<2->{For interacting with ROOT in the browser or standalone.} & \only<2->{Sergey Linev} \\
+%% \centering \only<3->{rootio} & \only<3->{Go} & \only<3->{go-hep ecosystem in Go.} & \only<3->{Sebastien Binet} \\
+%% \centering \only<4->{uproot} & \only<4->{Python} & \only<1-3>{\mbox{\hspace{4 cm}} \mbox{\hspace{4 cm}} \mbox{\hspace{4 cm}}}\only<4->{For quickly getting ROOT data into Numpy and Pandas for machine learning.}\vspace{-0.25 cm} & \only<4->{Jim Pivarski (me)} \\
+%%  & \only<5->{Rust?} & & \\
+%% \end{tabular}
 
-\vspace{-6.25 cm}
-\only<1>{{\includegraphics[width=\linewidth]{root4j.png}}}
-\vspace{6 cm}
-\end{columns}
+%% \vspace{-6.25 cm}
+%% \only<1>{{\includegraphics[width=\linewidth]{root4j.png}}}
+%% \vspace{6 cm}
+%% \end{columns}
+%% \end{frame}
+
+%% \begin{frame}[fragile]{Example session (\only<1>{native Spark, which is Scala}\only<2>{PySpark in Python})}
+%% \vspace{0.35 cm}
+%% \begin{center}
+%% \begin{minipage}{0.9\linewidth}
+%% Launch Spark with packages from Maven Central.
+%% \small
+%% \begin{onlyenv}<1>
+%% \begin{minted}{bash}
+%% spark-shell --packages org.diana-hep:spark-root_2.11:x.y.z, \
+%%                        org.diana-hep:histogrammar_2.11:1.0.4
+%% \end{minted}
+%% \end{onlyenv}
+%% \begin{onlyenv}<2>
+%% \begin{minted}{bash}
+%% pyspark     --packages org.diana-hep:spark-root_2.11:x.y.z, \
+%%                        org.diana-hep:histogrammar_2.11:1.0.4
+%% \end{minted}
+%% \end{onlyenv}
+
+%% \normalsize
+%% Read ROOT files like any other DataFrame input source.
+
+%% \small
+%% \begin{onlyenv}<1>
+%% \begin{minted}{scala}
+%% val df = spark.sqlContext.read.root(
+%%                           "hdfs://path/to/files/*.root")
+%% \end{minted}
+%% \end{onlyenv}
+%% \begin{onlyenv}<2>
+%% \begin{minted}{python}
+%% df = sqlContext.read.format("org.dianahep.sparkroot") \
+%%                     .load("hdfs://path/to/files/*.root")
+%% \end{minted}
+%% \end{onlyenv}
+
+%% \vspace{-0.5 cm}
+%% \small
+%% \begin{verbatim}
+%% df.printSchema()
+%% root
+%%  |-- met: float (nullable = false)
+%%  |-- muons: array (nullable = false)
+%%  |    |-- element: struct (containsNull = false)
+%%  |    |    |-- pt: float (nullable = false)
+%%  |    |    |-- eta: float (nullable = false)
+%%  |    |    |-- phi: float (nullable = false)
+%%  |-- jets: array (nullable = false)
+%% \end{verbatim}
+%% \end{minipage}
+%% \end{center}
+%% \end{frame}
+
+%% \begin{frame}[fragile]{Example session (native Spark and PySpark)}
+%% \vspace{0.35 cm}
+%% \begin{center}
+%% \begin{minipage}{0.9\linewidth}
+%% \small
+%% \begin{verbatim}
+%% df.show()
+%% +---------+--------------------+--------------------+
+%% |      met|               muons|                jets|
+%% +---------+--------------------+--------------------+
+%% | 55.59374|[[28.07075,-1.331...|[[194.19714,-2.65...|
+%% |39.440292|                  []|[[93.64958,-0.273...|
+%% |2.1817229|[[5.523367,-0.375...|[[96.09923,0.7058...|
+%% |  80.5822|[[48.910114,-0.17...|[[165.2686,0.2623...|
+%% | 84.43806|                  []|[[51.87823,1.6442...|
+%% | 84.63146|[[33.84279,-0.062...|[[137.74776,-0.45...|
+%% | 393.8167|[[25.402626,-0.66...|[[481.8268,-1.115...|
+%% |  75.0873|                  []|[[144.62373,-2.21...|
+%% |2.6512942|[[6.851382,2.3145...|[[72.08256,-1.713...|
+%% |36.753353|                  []|[[72.7172,-1.3265...|
+%% +---------+--------------------+--------------------+
+%% only showing top 10 rows
+%% \end{verbatim}
+%% \end{minipage}
+%% \end{center}
+%% \end{frame}
+
+%% \begin{frame}[fragile]{Example session (\only<1>{Spark}\only<2>{PySpark})}
+%% \vspace{0.1 cm}
+%% \small
+%% \begin{onlyenv}<1>
+%% \begin{minted}{scala}
+%% // Bring dollar-sign notation into scope.
+%% import spark.sqlContext.implicits._
+
+
+%% // Compute event weight with columns and constants.
+%% df.select(($"lumi"*xsec/nGen) * $"LHE_weight"(309)).show()
+
+%% // Pre-defined function (notation's a little weird).
+%% val isGoodEvent = (
+%%     ($"evtHasGoodVtx" === 1) &&
+%%     ($"evtHasTrg" === 1)     &&
+%%     ($"tkmet" >= 25.0)       &&
+%%     ($"Mu_pt" >= 30.0)       &&
+%%     ($"W_mt" >= 30.0))
+
+%% // Use it.
+%% println("%d events pass".format(
+%%                     df.where(isGoodEvent).count()))
+%% \end{minted}
+%% \end{onlyenv}\begin{onlyenv}<2>
+%% \begin{minted}{python}
+%% # Python trick: make columns Python variables.
+%% for name in df.schema.names:
+%%     exec("{0} = df['{0}']".format(name))
+
+%% # Look at a few event weights.
+%% df.select((lumi*xsec/nGen) * LHE_weight[309]).show()
+
+%% # Pre-defined function (notation's a little different).
+%% isGoodEvent = (
+%%     (evtHasGoodVtx == 1) &
+%%     (evtHasTrg == 1)     &
+%%     (tkmet >= 25.0)      &
+%%     (Mu_pt >= 30.0)      &
+%%     (W_mt >= 30.0))
+
+%% # Use it.
+%% print "{} events pass".format(
+%%                   df.where(isGoodEvent).count())
+%% \end{minted}
+%% \end{onlyenv}
+%% \end{frame}
+
+%% \begin{frame}[fragile]{Example session (\only<1>{Spark}\only<2->{PySpark})}
+%% \vspace{0.1 cm}
+%% \small
+%% \begin{onlyenv}<1>
+%% \begin{minted}{scala}
+%% // Use Histogrammar to make histograms.
+%% import org.dianahep.histogrammar._
+%% import org.dianahep.histogrammar.sparksql._
+%% import org.dianahep.histogrammar.bokeh._
+
+%% // Define histogram functions with SparkSQL Columns.
+%% val h = df.Label(
+%%          "muon pt" -> Bin(100, 0.0, 50.0, $"Mu_pt"),
+%%          "W mt" -> Bin(100, 0.0, 120.0, $"W_mt"))
+
+%% // Plot the histograms with Bokeh.
+%% val bokehhist = h.get("muon pt").bokeh()
+%% plot(bokehhist)
+%% val bokehhist2 = h.get("W mt").bokeh()
+%% plot(bokehhist2)
+%% \end{minted}
+%% \end{onlyenv}\begin{onlyenv}<2->
+%% \begin{minted}{python}
+%% # Use Histogrammar to make histograms.
+%% from histogrammar import *
+%% import histogrammar.sparksql
+%% histogrammar.sparksql.addMethods(df)
+
+%% # Define histogram functions with SparkSQL Columns.
+%% h = df.Label(
+%%       muon_pt = Bin(100, 0.0, 50.0, Mu_pt),
+%%       W_mt = Bin(100, 0.0, 120.0, W_mt))
+
+%% # Plot the histograms with PyROOT.
+%% roothist = h.get("muon_pt").plot.root("muon pt")
+%% roothist.Draw()
+%% roothist2 = h.get("W_mt").plot.root("W mt")
+%% roothist2.Draw()
+%% \end{minted}
+%% \end{onlyenv}
+
+%% \vspace{-2.7 cm}
+%% \begin{uncoverenv}<3>
+%% \mbox{ } \hfill \includegraphics[width=3.8 cm]{muonpt.png}\includegraphics[width=3.8 cm]{wmt.png}
+%% \end{uncoverenv}
+%% \end{frame}
+
+\begin{frame}{}
+
 \end{frame}
 
 
