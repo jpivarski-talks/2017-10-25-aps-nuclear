@@ -79,50 +79,106 @@
 \uncover<2->{\mbox{ } \hfill \includegraphics[width=0.7\linewidth]{aws-snowmobile.jpg}\hspace{-1 cm}}
 \end{frame}
 
-\begin{frame}{Bigger data}
-\vspace{0.5 cm}
+\begin{frame}{Also a much larger community}
+\vspace{0.35 cm}
+\textcolor{darkblue}{Rate of web searches for ``ROOT TTree'' and ``Spark DataFrame'' (Google Trends):}
 
-\large In fact, they're solving {\it harder} problems than ours
+\includegraphics[width=\linewidth]{root-spark-google-trends.png}
 
-\vspace{0.1 cm}
-\begin{itemize}
-\item all-to-all problems \hfill \begin{minipage}{0.7\linewidth}(relationships span whole dataset: e.g.\ market basket),\end{minipage}
-\item live updates \hfill \begin{minipage}{0.7\linewidth}(dataset grows while you analyze it),\end{minipage}
-\item no ansatz \hfill \begin{minipage}{0.7\linewidth}(modeling human behavior, often predictively),\end{minipage}
-\item complex models \hfill \begin{minipage}{0.7\linewidth}(thousands of free parameters; machine learning).\end{minipage}
-\end{itemize}
-
-\vspace{0.5 cm}
+\vfill
 \begin{uncoverenv}<2->
-\large And they have more resources:
-
-\vspace{0.1 cm}
+\textcolor{darkblue}{Similarly for question-and-answer sites:}
 \begin{itemize}
-\item more developers \hfill \begin{minipage}{0.7\linewidth}(trained in software engineering, not physics),\end{minipage}
-\item open-source culture \hfill \begin{minipage}{0.7\linewidth}(mostly).\end{minipage}
+\item RootTalk: 14,399 threads in 1997--2012 (15 years)
+\item StackOverflow questions tagged {\tt \small \#spark}: 26,155 in the 3.3 years the tag has existed. (Not counting CrossValidated, Spark Developer and User mailing lists\ldots)
 \end{itemize}
 \end{uncoverenv}
+
+\vfill
+\uncover<3>{\textcolor{darkorange}{\bf More users to talk to; more developers adding features/fixing bugs.}}
 \end{frame}
 
-\begin{frame}{The conclusion I take from this}
-\vspace{0.5 cm}
-\begin{center}
-\LARGE We should be using their software.
-\end{center}
+\begin{frame}{Particle physics is a special case}
+
+
+
 \end{frame}
 
-\begin{frame}{Our software developed \only<1>{outside}\only<2->{\xcancel{outside} \underline{before}} the big data ecosystem}
-\vspace{0.5 cm}
-\begin{uncoverenv}<4->
-\fbox{\begin{minipage}{5 cm}
-But that doesn't mean we're stuck. It's a challenge.
-\end{minipage}}
-\end{uncoverenv}
 
-\vspace{-1.43 cm}
-\only<1-2>{\includegraphics[width=\linewidth]{separation-1.png}}
-\only<3->{\includegraphics[width=\linewidth]{separation-2.png}}
-\end{frame}
+%% \begin{frame}{Bigger data}
+%% \vspace{0.5 cm}
+
+%% \large In fact, they're solving {\it harder} problems than ours
+
+%% \vspace{0.1 cm}
+%% \begin{itemize}
+%% \item all-to-all problems \hfill \begin{minipage}{0.7\linewidth}(relationships span whole dataset: e.g.\ market basket),\end{minipage}
+%% \item live updates \hfill \begin{minipage}{0.7\linewidth}(dataset grows while you analyze it),\end{minipage}
+%% \item no ansatz \hfill \begin{minipage}{0.7\linewidth}(modeling human behavior, often predictively),\end{minipage}
+%% \item complex models \hfill \begin{minipage}{0.7\linewidth}(thousands of free parameters; machine learning).\end{minipage}
+%% \end{itemize}
+
+%% \vspace{0.5 cm}
+%% \begin{uncoverenv}<2->
+%% \large And they have more resources:
+
+%% \vspace{0.1 cm}
+%% \begin{itemize}
+%% \item more developers \hfill \begin{minipage}{0.7\linewidth}(trained in software engineering, not physics),\end{minipage}
+%% \item open-source culture \hfill \begin{minipage}{0.7\linewidth}(mostly).\end{minipage}
+%% \end{itemize}
+%% \end{uncoverenv}
+%% \end{frame}
+
+%% \begin{frame}{The conclusion I take from this}
+%% \vspace{0.5 cm}
+%% \begin{center}
+%% \LARGE We should be using their software.
+%% \end{center}
+%% \end{frame}
+
+%% \begin{frame}{Our software developed \only<1>{outside}\only<2->{\xcancel{outside} \underline{before}} the Big Data ecosystem}
+%% \vspace{0.5 cm}
+%% \begin{uncoverenv}<4->
+%% \fbox{\begin{minipage}{5 cm}
+%% We can still bridge this gap, though it's a challenge.
+%% \end{minipage}}
+%% \end{uncoverenv}
+
+%% \vspace{-1.43 cm}
+%% \only<1-2>{\includegraphics[width=\linewidth]{separation-1.png}}
+%% \only<3->{\includegraphics[width=\linewidth]{separation-2.png}}
+%% \end{frame}
+
+%% \begin{frame}{Our problems fit into Big Data concepts}
+%% \vspace{0.5 cm}
+%% \begin{center}\renewcommand{\arraystretch}{2}
+%% \begin{tabular}{c | c}
+%% mapper (Hadoop) & skim, slim, preprocess \\
+%% reducer (Hadoop) & histogramming \\
+%% \begin{minipage}{0.45\linewidth}
+%% \vspace{0.25 cm}
+%% \begin{center}
+%% data inversion
+
+%% (e.g.\ web pages $\to$ search terms)
+%% \end{center}
+%% \end{minipage} & \begin{minipage}{0.45\linewidth}
+%% \vspace{0.25 cm}
+%% \begin{center}
+%% alignment \& calibration
+
+%% (e.g.\ track fits $\to$ detector residuals)
+%% \end{center}
+%% \end{minipage} \\
+%% modeling & fitting \\
+%% machine learning & machine learning
+%% \end{tabular}
+%% \end{center}
+
+%% \vspace{0.5 cm}
+%% \uncover<2->{\textcolor{darkblue}{\large So what happens if we just try to use Spark for a data analysis?}}
+%% \end{frame}
 
 
 \end{document}
