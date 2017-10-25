@@ -331,7 +331,7 @@ We used this for most of the year. Efficient after conversion, but conversion st
  & \only<5->{\textcolor{darkorange}{\bf Rust?}} & & \\
 \end{tabular}
 
-\vspace{-6.25 cm}
+\vspace{-6.15 cm}
 \only<1>{{\includegraphics[width=\linewidth]{root4j.png}}}
 \vspace{6 cm}
 \end{columns}
@@ -518,14 +518,14 @@ roothist2.Draw()
 \LARGE Spark and Big Data in general are weak in plotting.
 
 \vspace{1 cm}
-\uncover<2->{\Large They have fancy d3 visualizations, but lack convenient workaday routines for quick histograms, profiles, heatmaps, lego plots, etc.}
+\uncover<2->{\Large They have fancy visualizations (d3), but lack convenient workaday routines for quick histograms, profiles, heatmaps, lego plots, etc.}
 
 \vspace{1 cm}
 \uncover<3->{\normalsize (Exception: Python and R have good interactive graphics for in-memory analytics.)}
 \end{center}
 \end{frame}
 
-\begin{frame}[fragile]{ROOT's API doesn't fit Spark's functional workflows well}
+\begin{frame}[fragile]{Analysis in Spark is a chain of higher-order functions}
 \vspace{1 cm}
 \begin{columns}
 \column{0.35\linewidth}
@@ -747,19 +747,6 @@ Categorize(fillByName,
 \end{columns}
 \end{frame}
 
-\begin{frame}{}
-\vspace{1.5 cm}
-\begin{center}
-\includegraphics[width=0.6\linewidth]{histogrammar-logo-paths.pdf}
-
-\vspace{0.5 cm}
-\Large \href{http://histogrammar.org}{\textcolor{blue}{\tt http://histogrammar.org}}
-\end{center}
-
-\vspace{1.5 cm}
-\textcolor{mauve}{\LARGE (Get it?)}
-\end{frame}
-
 \begin{frame}{It all got mathematical pretty quickly\ldots}
 \vspace{0.3 cm}
 {\bf For transparent parallelization, combinators must}
@@ -813,6 +800,19 @@ Categorize(fillByName,
 \vspace{-3.9 cm}
 \hfill $\left\}\mbox{\rotatebox{90}{\hspace{-0.5 cm}monoid\hspace{1.1 cm}}\hspace{0.15 cm}}\right.$ \hspace{-0.9 cm}
 \end{uncoverenv}
+\end{frame}
+
+\begin{frame}{}
+\vspace{1.5 cm}
+\begin{center}
+\includegraphics[width=0.6\linewidth]{histogrammar-logo-paths.pdf}
+
+\vspace{0.5 cm}
+\Large \href{http://histogrammar.org}{\textcolor{blue}{\tt http://histogrammar.org}}
+\end{center}
+
+\vspace{1.5 cm}
+\textcolor{mauve}{\LARGE (Get it?)}
 \end{frame}
 
 \begin{frame}{Other projects in development}
